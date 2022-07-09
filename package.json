@@ -1,5 +1,5 @@
 {
-  "name": "freelance",
+  "name": "boilerplate",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.2.1",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "framer-motion": "^6.4.3",
     "next": "12.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
