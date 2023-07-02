@@ -55,10 +55,8 @@ export default function Login( {handleSubmit} : LoginProps) {
                     display={"flex"}
                 >
                     <Input 
+                        className="input-bar"
                         placeholder={"username"}
-                        textAlign={"center"}
-                        display={"flex"}
-                        width={"25vh"}
                         borderColor={"transparent"}
                         borderBottom={"#4B637A 2px solid"}
                         isInvalid={isError}

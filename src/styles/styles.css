@@ -12,3 +12,10 @@
     opacity: 1;
   }
   
+.input-bar {
+    text-align: center;
+    display: flex;
+    width: 25vh;
+    border-color: transparent;
+    border-bottom: #4B637A 2px solid;
+}

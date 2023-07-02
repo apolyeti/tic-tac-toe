@@ -26,7 +26,7 @@ export default function Game({username} : GameProps) {
     return (
         <AbsoluteCenter>
             <h1>
-                {username}
+                player: {username}
             </h1>
             <Grid
                 templateColumns="repeat(3, 1fr)"
