@@ -12,10 +12,11 @@ import { useState } from "react";
 
 interface LoginProps {
     handleSubmit: (username: string) => void;
+    handleToggle: () => void;
 }
 
 
-export default function Login( {handleSubmit} : LoginProps) {
+export default function Login( {handleSubmit, handleToggle} : LoginProps) {
     const [username, setUsername] = useState('');
     const toast = useToast();
     const [isTouched, setIsTouched] = useState(false);
@@ -36,6 +37,7 @@ export default function Login( {handleSubmit} : LoginProps) {
                 position: "top",
             });
         } else {
+            handleToggle()
             handleSubmit(username);
         }
     }
