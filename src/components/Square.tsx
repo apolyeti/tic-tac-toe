@@ -4,6 +4,7 @@ import AnimatedMark from "@components/AnimatedMark";
 interface SquareProps {
     value: string;
     onSquareClick: () => void;
+    isWinning: boolean;
 }   
 
 

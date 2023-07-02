@@ -1,0 +1,14 @@
+.winning-line {
+    position: absolute;
+    background-color:#162F47; /* or any other color you prefer */
+    height: 5px;
+    width: 0;
+    opacity: 0;
+    transition: width 0.5s, opacity 0.5s;
+  }
+  
+  .winning-line.animate {
+    width: 100%;
+    opacity: 1;
+  }
+  

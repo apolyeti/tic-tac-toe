@@ -6,13 +6,18 @@ import { useState } from "react";
 export default function Game() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [value, setValue] = useState("X");
+    const winner = calculateWinner(squares);
 
     function handleSquareClick(index : number) {
+        if (squares[index] || calculateWinner(squares)) {
+            return;
+        }
         const nextSquares = squares.slice();
         nextSquares[index] = value;
         setSquares(nextSquares);
         setValue(value === "X" ? "O" : "X");
     }
+   
 
     return (
         <AbsoluteCenter>
@@ -24,34 +29,38 @@ export default function Game() {
                 h="300px"
                 border="1px solid black"
             >
-                <GridItem>
-                    <Square value={squares[0]} key={0} onSquareClick={() => handleSquareClick(0)}/>
-                </GridItem>
-                <GridItem>
-                    <Square value={squares[1]} key={1} onSquareClick={() => handleSquareClick(1)}/>
-                </GridItem>
-                <GridItem>
-                    <Square value={squares[2]} key={2} onSquareClick={() => handleSquareClick(2)}/>
-                </GridItem>
-                <GridItem>
-                    <Square value={squares[3]} key={3} onSquareClick={() => handleSquareClick(3)}/>
-                </GridItem>
-                <GridItem>
-                    <Square value={squares[4]} key={4} onSquareClick={() => handleSquareClick(4)}/>
-                </GridItem>
-                <GridItem>
-                    <Square value={squares[5]} key={5} onSquareClick={() => handleSquareClick(5)}/>
-                </GridItem>
-                <GridItem>
-                    <Square value={squares[6]} key={6} onSquareClick={() => handleSquareClick(6)}/>
-                </GridItem>
-                <GridItem>
-                    <Square value={squares[7]} key={7} onSquareClick={() => handleSquareClick(7)}/>
-                </GridItem>
-                <GridItem>
-                    <Square value={squares[8]} key={8} onSquareClick={() => handleSquareClick(8)}/>
-                </GridItem>
+                {squares.map((mark, index) => (
+                    <GridItem key={index}>
+                        <Square
+                        value={mark}
+                        key={index}
+                        onSquareClick={() => handleSquareClick(index)}
+                        isWinning={winner && winner.includes(index)}
+                        />
+                    </GridItem>
+                ))}
             </Grid>
         </AbsoluteCenter>
     )
+}
+
+function calculateWinner(squares : Array<string>) {
+    const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7 ,8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+
+    for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+            return lines[i]
+        }
+    }
+    return null;
 }
