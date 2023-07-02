@@ -1,10 +1,18 @@
 import { Grid, GridItem, AbsoluteCenter } from "@chakra-ui/react";
-import Gridslot from "@components/Gridslot";
+import Square from "@components/Square";
 import { useState } from "react";
 
 
 export default function Game() {
+    const [squares, setSquares] = useState(Array(9).fill(null));
+    const [value, setValue] = useState("X");
 
+    function handleSquareClick(index : number) {
+        const nextSquares = squares.slice();
+        nextSquares[index] = value;
+        setSquares(nextSquares);
+        setValue(value === "X" ? "O" : "X");
+    }
 
     return (
         <AbsoluteCenter>
@@ -17,31 +25,31 @@ export default function Game() {
                 border="1px solid black"
             >
                 <GridItem>
-                    <Gridslot index={0} key={0}/>
+                    <Square value={squares[0]} key={0} onSquareClick={() => handleSquareClick(0)}/>
                 </GridItem>
                 <GridItem>
-                    <Gridslot index={1} key={1}/>
+                    <Square value={squares[1]} key={1} onSquareClick={() => handleSquareClick(1)}/>
                 </GridItem>
                 <GridItem>
-                    <Gridslot index={2} key={2}/>
+                    <Square value={squares[2]} key={2} onSquareClick={() => handleSquareClick(2)}/>
                 </GridItem>
                 <GridItem>
-                    <Gridslot index={3} key={3}/>
+                    <Square value={squares[3]} key={3} onSquareClick={() => handleSquareClick(3)}/>
                 </GridItem>
                 <GridItem>
-                    <Gridslot index={4} key={4}/>
+                    <Square value={squares[4]} key={4} onSquareClick={() => handleSquareClick(4)}/>
                 </GridItem>
                 <GridItem>
-                    <Gridslot index={5} key={5}/>
+                    <Square value={squares[5]} key={5} onSquareClick={() => handleSquareClick(5)}/>
                 </GridItem>
                 <GridItem>
-                    <Gridslot index={6} key={6}/>
+                    <Square value={squares[6]} key={6} onSquareClick={() => handleSquareClick(6)}/>
                 </GridItem>
                 <GridItem>
-                    <Gridslot index={7} key={7}/>
+                    <Square value={squares[7]} key={7} onSquareClick={() => handleSquareClick(7)}/>
                 </GridItem>
                 <GridItem>
-                    <Gridslot index={8} key={8}/>
+                    <Square value={squares[8]} key={8} onSquareClick={() => handleSquareClick(8)}/>
                 </GridItem>
             </Grid>
         </AbsoluteCenter>
