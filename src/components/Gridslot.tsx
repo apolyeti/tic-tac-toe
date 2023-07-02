@@ -1,5 +1,6 @@
 import { Button, AbsoluteCenter } from "@chakra-ui/react";
 import { useState } from "react";
+import AnimatedMark from "@components/AnimatedMark";
 
 interface GridslotProps {
     index: number;
@@ -8,11 +9,14 @@ interface GridslotProps {
 
 export default function Gridslot ({index} : GridslotProps) {
     const [mark, setMark] = useState(null);
+    const [player, setPlayer] = useState("X");
 
-    const handleClick = () => () => {
-        setMark("O");
+    const handleClick = () => {
+        if (mark === null) {
+            setMark(player);
+            setPlayer(player === "X" ? "O" : "X")
+        }
     }
-
 
 
     return (
@@ -21,11 +25,16 @@ export default function Gridslot ({index} : GridslotProps) {
             h="100px" 
             bg="white" 
             border="1px solid black"
-            onClick={handleClick()}
+            onClick={handleClick}
             fontFamily="Ubuntu"
             fontSize={"50px"}
+            bgColor="#6483A3"
+            _hover={{
+                bgColor: "#81AAD4",
+            }}
+            color="#162F47"
         >
-            {mark}
+            {mark && <AnimatedMark value={mark} />}
         </Button>
     )
 }

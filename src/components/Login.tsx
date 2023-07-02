@@ -32,7 +32,7 @@ export default function Login( {handleSubmit, handleToggle} : LoginProps) {
                 title: "username is empty",
                 description: "please enter a username",
                 status: "error",
-                duration: 9000,
+                duration: 4000,
                 isClosable: true,
                 position: "top",
             });
