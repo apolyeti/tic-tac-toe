@@ -1,6 +1,6 @@
 const META = {
-    title: "App name",
-    description: "App description",
+    title: "tic-tac-toe",
+    description: "create rooms and play tic-tac-toe with your friends",
     lang: "en",
     url: "https://example.com",
     image: "/logo.png",
