@@ -12,11 +12,10 @@ import { useState } from "react";
 
 interface LoginProps {
     handleSubmit: (username: string) => void;
-    handleToggle: () => void;
 }
 
 
-export default function Login( {handleSubmit, handleToggle} : LoginProps) {
+export default function Login( {handleSubmit} : LoginProps) {
     const [username, setUsername] = useState('');
     const toast = useToast();
     const [isTouched, setIsTouched] = useState(false);
@@ -37,7 +36,6 @@ export default function Login( {handleSubmit, handleToggle} : LoginProps) {
                 position: "top",
             });
         } else {
-            handleToggle()
             handleSubmit(username);
         }
     }
@@ -50,7 +48,7 @@ export default function Login( {handleSubmit, handleToggle} : LoginProps) {
                     justifyContent={"center"}
                     display={"flex"}
                 >
-                    enter username here
+                    welcome to tic-tac-toe
                 </FormLabel>
                 <Flex
                     justifyContent={"center"}
@@ -61,10 +59,26 @@ export default function Login( {handleSubmit, handleToggle} : LoginProps) {
                         textAlign={"center"}
                         display={"flex"}
                         width={"25vh"}
+                        borderColor={"transparent"}
+                        borderBottom={"#4B637A 2px solid"}
                         isInvalid={isError}
                         onBlur={handleBlur}
                         onChange={(e) => 
-                            setUsername(e.target.value)}/>
+                            setUsername(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                handleClick();
+                            }
+                        }}
+                        _hover={{
+                            borderColor: "transparent",
+                            borderBottom: "#4B637A 2px solid",
+                        }}
+                        _active={{
+                            borderColor: "transparent",
+                            borderBottom: "#4B637A 2px solid",
+                        }}
+                    />
                 </Flex>
                 <Flex
                     justifyContent={"center"}

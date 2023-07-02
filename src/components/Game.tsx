@@ -1,9 +1,13 @@
-import { Grid, GridItem, AbsoluteCenter } from "@chakra-ui/react";
+import { Grid, GridItem, AbsoluteCenter, Button } from "@chakra-ui/react";
 import Square from "@components/Square";
 import { useState } from "react";
 
 
-export default function Game() {
+interface GameProps {
+    username: string;
+}
+
+export default function Game({username} : GameProps) {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [value, setValue] = useState("X");
     const winner = calculateWinner(squares);
@@ -21,6 +25,9 @@ export default function Game() {
 
     return (
         <AbsoluteCenter>
+            <h1>
+                {username}
+            </h1>
             <Grid
                 templateColumns="repeat(3, 1fr)"
                 templateRows="repeat(3, 1fr)"
@@ -32,10 +39,10 @@ export default function Game() {
                 {squares.map((mark, index) => (
                     <GridItem key={index}>
                         <Square
-                        value={mark}
-                        key={index}
-                        onSquareClick={() => handleSquareClick(index)}
-                        isWinning={winner && winner.includes(index)}
+                            value={mark}
+                            key={index}
+                            onSquareClick={() => handleSquareClick(index)}
+                            isWinning={winner && winner.includes(index)}
                         />
                     </GridItem>
                 ))}
